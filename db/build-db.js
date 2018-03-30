@@ -8,7 +8,7 @@ module.exports.createDatabase = () =>{
     trainingProgramDB.run(`DROP TABLE IF EXISTS TrainingPrograms`);
     trainingProgramDB.run(`CREATE TABLE IF NOT EXISTS TrainingPrograms 
       ( 
-        training_program INTEGER PRIMARY KEY,
+        training_program_id INTEGER PRIMARY KEY,
         no_of_seats INTEGER,
         instructor_name TEXT,
         start_date TEXT,
