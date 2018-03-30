@@ -31,7 +31,10 @@ module.exports.updateTrainingProgram = (id, {no_of_seats, instructor_name, start
       course_category
     ) VALUES (
       ${id== undefined ? null : id},
-      no_of_seats,
-
+      ${no_of_seats},
+      ${instructor_name},
+      ${start_date},
+      ${end_date},
+      ${course_category}
     )`)
-)
+);
