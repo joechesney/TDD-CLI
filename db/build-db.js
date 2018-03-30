@@ -1,22 +1,33 @@
-import sqlite3 from sqlite3;
-import faker from faker;
+const sqlite3 = require('sqlite3').verbose();
+const faker = require('faker');
 
 const trainingProgramDB = new sqlite3.Database("./db.sqlite");
 
-const createDatabase = () =>{
+module.exports.createDatabase = () =>{
   trainingProgramDB.serialize(()=>{
     trainingProgramDB.run(`DROP TABLE IF EXISTS TrainingPrograms`);
     trainingProgramDB.run(`CREATE TABLE IF NOT EXISTS TrainingPrograms 
       ( 
-        no_of_seats
-        instructor_name
-        start_date
-        end_date
-        course_category
+        training_program INTEGER PRIMARY KEY,
+        no_of_seats INTEGER,
+        instructor_name TEXT,
+        start_date TEXT,
+        end_date TEXT,
+        course_category TEXT
       )`
     );// end of create
     for(let i = 0;  i < 25; i++){
-
+      trainingProgramDB.run(`
+        INSERT INTO TrainingPrograms 
+        VALUES(
+          ${i},
+          ${faker.random.number({min:10, max:50})},
+          "${faker.name.firstName()}",
+          "${faker.date.past(5)}",
+          "${faker.date.future(3)}",
+          "${faker.commerce.department()}"
+        )
+      `);
     }
   });
 };
