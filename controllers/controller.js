@@ -5,8 +5,9 @@ const {
   deleteOne,
   updateAdd } = require("../models/model");
 
-module.exports.getAllTrainingPrograms = () =>
+module.exports.getAllTrainingPrograms = () => {
   getAll().then(trainingPrograms => trainingPrograms);
+}
 
 
 module.exports.getOneTrainingProgram = (id) =>
