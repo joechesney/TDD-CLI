@@ -22,7 +22,7 @@ module.exports.deleteOne = (id)=>
 
 module.exports.updateAdd = (id, {no_of_seats, instructor_name, start_date, end_date, course_category})=>
   new Promise((resolve, reject)=>
-    trainingProgramDB.run(`REPLACE INTO TrainingProgams (
+    trainingProgramDB.run(`REPLACE INTO TrainingPrograms (
       training_program_id,
       no_of_seats,
       instructor_name,
@@ -36,5 +36,7 @@ module.exports.updateAdd = (id, {no_of_seats, instructor_name, start_date, end_d
       ${start_date},
       ${end_date},
       ${course_category}
-    )`)
+    )`, function(err){
+      return this.lastID;
+    })
 );
