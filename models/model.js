@@ -10,7 +10,7 @@ module.exports.getAll = () =>
 
 module.exports.getOne= (id)=>
   new Promise((resolve, reject)=>
-    trainingProgramDB.get(`SELECT * FROM TrainingPrograms WHERE training_program = ${id}`, (err,data)=> err?reject(err):resolve(data))
+    trainingProgramDB.get(`SELECT * FROM TrainingPrograms WHERE training_program_id = ${id}`, (err,data)=> err?reject(err):resolve(data))
   );
 
 module.exports.deleteOne = (id)=>
