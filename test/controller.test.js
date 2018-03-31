@@ -3,10 +3,10 @@ const { assert } = require('chai');
 
 describe("controller function tests", ()=>{
   // getAllFunctions
-  it("should return all the training programs listed in the database",()=>{
-    let { getAllTrainingPrograms } = require('../controllers/controller');
-    getAllTrainingPrograms()
-  });
+  // it("should return all the training programs listed in the database",()=>{
+  //   let { getAllTrainingPrograms } = require('../controllers/controller');
+  //   getAllTrainingPrograms()
+  // });
 
   // getOne function
   it("getOne should return a single object", ()=>{
