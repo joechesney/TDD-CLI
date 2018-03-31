@@ -1,5 +1,5 @@
 
-const { assert } = require('chai');
+const { assert: { isObject } } = require('chai');
 
 describe("controller function tests", ()=>{
   // getAllFunctions
@@ -11,8 +11,9 @@ describe("controller function tests", ()=>{
   // getOne function
   it("getOne should return a single object", ()=>{
     let { getOneTrainingProgram } = require('../controllers/controller');
-    assert.isObject(getOneTrainingProgram(3));
-  })// this is not ready. change it to the controller function
+    getOneTrainingProgram(3)
+    .then(tp=> isObject(tp));
+  });
 
   let newTrainingProgram = {
     no_of_seats: 30,
