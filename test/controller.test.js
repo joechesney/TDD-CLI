@@ -1,12 +1,14 @@
 
-const { assert: { isObject } } = require('chai');
+const { assert: { isObject, isArray } } = require('chai');
 
 describe("controller function tests", ()=>{
+
   // getAllFunctions
-  // it("should return all the training programs listed in the database",()=>{
-  //   let { getAllTrainingPrograms } = require('../controllers/controller');
-  //   getAllTrainingPrograms()
-  // });
+  it("should return all the training programs listed in the database",()=>{
+    let { getAllTrainingPrograms } = require('../controllers/controller');
+    getAllTrainingPrograms().
+    then(tps=>isArray(tps));
+  });
 
   // getOne function
   it("getOne should return a single object", ()=>{
