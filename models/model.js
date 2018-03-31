@@ -2,25 +2,25 @@
 const sqlite3 = require("sqlite3");
 const trainingProgramDB = new sqlite3.Database('../db.sqlite');
 
-module.exports.getAllTrainingPrograms = () =>
+module.exports.getAll = () =>
   new Promise((resolve, reject)=>
-    trainingProgramDB.get(`SELECT * FROM TrainingPrograms`, 
-    (error,data)=> err ? reject(err):resolve(data))
+    trainingProgramDB.get(`SELECT * FROM "TrainingPrograms"`, 
+    (err,data)=> err ? reject(err):resolve(data))
   );
 
-module.exports.getOneTrainingProgram = (id)=>
+module.exports.getOne= (id)=>
   new Promise((resolve, reject)=>
     trainingProgramDB.get(`SELECT * FROM TrainingPrograms WHERE training_program = ${id}`, (err,data)=> err?reject(err):resolve(data))
   );
 
-module.exports.deleteTrainingProgram = (id)=>
+module.exports.deleteOne = (id)=>
   new Promise((resolve, reject)=>
     trainingProgramDB.run(`DELETE FROM TrainingPrograms WHERE training_program_id = ${id}`, function(err){
       err?reject(err):resolve(this.changes);
     })
   );
 
-module.exports.updateTrainingProgram = (id, {no_of_seats, instructor_name, start_date, end_date, course_category})=>
+module.exports.updateAdd = (id, {no_of_seats, instructor_name, start_date, end_date, course_category})=>
   new Promise((resolve, reject)=>
     trainingProgramDB.run(`REPLACE INTO TrainingProgams (
       training_program_id,
