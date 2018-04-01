@@ -74,7 +74,13 @@ prompt.get(greet, (err, result) => {
     // Edit Existing Course
     case 2:
       prompt.get(editCourse, (err, result) => {
-        
+        getOneTrainingProgram(result.course_id)
+        .then((course)=>{
+          console.log('the chosen course:',course);
+        })
+        .catch(err=>{
+          console.log('err',err);
+        })
         // This one needs to ask for the course id,
         // then get that course from the database, if it exists
         // then display the existing course on the screen
