@@ -50,8 +50,8 @@ const createCourse = {
 };
 
 prompt.get(greet, (err, result) => {
-
-  switch (result.choice) {
+  
+  switch (+result.choice) {
 
     // Create New Course
     case 1:
@@ -90,6 +90,20 @@ prompt.get(greet, (err, result) => {
     // View all upcoming courses
     case 5:
       prompt.get(viewAllUpcomingCourses, (err, result) => {
+        // Not sure what this does lol
+      });
+    break;
+
+    // View a past course
+    case 6:
+      prompt.get(viewPastCourse, (err, result) => {
+        // Not sure what this does lol
+      });
+    break;
+
+    // View all past courses
+    case 7:
+      prompt.get(viewAllPastCourses, (err, result) => {
         // Not sure what this does lol
       });
     break;
