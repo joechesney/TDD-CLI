@@ -1,13 +1,18 @@
 
-const {createDatabase} = require('./db/build-db');
+const { createDatabase } = require('./db/build-db');
 const prompt = require('prompt');
-createDatabase();
+const {
+  getAllTrainingPrograms,
+  getOneTrainingProgram } =
+  require('./controllers/controller');
+// createDatabase();
+
 
 prompt.start();
 
 const greet = {
   properties: {
-    choice:{
+    choice: {
       message: `
       Welcome the the Bangazon Continuing Ed Course Creator
       Please choose an action from the following:
@@ -26,38 +31,61 @@ const greet = {
 const createCourse = {
   // each of these needs restrictions
   properties: {
-    course:{
+    course: {
       message: `Enter the course name`
     },
-    instructor:{
+    instructor: {
       message: `Enter the instructor name`
     },
-    startDate:{
+    startDate: {
       message: `Enter the start date`
     },
-    endDate:{
+    endDate: {
       message: `Enter the end date`
     },
-    seats:{
+    seats: {
       message: `Enter the number of seats`
     }
   }
 };
 
-prompt.get(greet, (err, result)=>{
+prompt.get(greet, (err, result) => {
 
-  // Create New Course
-  result.choice == 1? prompt.get(createCourse, (err,result)=>{
-    console.log('new course:',result);
-    // call function that creates new course and adds to the database. 
-    // send it the object with the new course info as a parameter
-  }):console.log("nah son");
+  switch (result.choice) {
+    case 1:
+      // Create New Course
+      prompt.get(createCourse, (err, result) => {
+        console.log('new course:', result);
+        // call function that creates new course and adds to the database. 
+        // send it the object with the new course info as a parameter
+      });
+      break;
 
-  //Edit Existsing Course
-  result.choice == 2? prompt.get(editCourse, (err,result)=>{
-    // This one needs to ask for the course id,
-    // then get that course from the database, if it exists
-    // then display the existing course on the screen
-    // and allow the user to edit the values then send it back
-  }):console.log("nah son");
+    case 2:
+      // Edit Existing Course
+      prompt.get(editCourse, (err, result) => {
+        // This one needs to ask for the course id,
+        // then get that course from the database, if it exists
+        // then display the existing course on the screen
+        // and allow the user to edit the values then send it back
+      });
+    break;
+    
+    case 3:
+      prompt.get(editCourse, (err, result) => {
+        // This one needs to ask for the course id,
+        // then get that course from the database, if it exists
+        // then display the existing course on the screen
+        // and allow the user to edit the values then send it back
+      });
+    break;
+    default:
+      console.log('nah son');
+      break;
+  }
+  
+
+
+  
+  
 });
