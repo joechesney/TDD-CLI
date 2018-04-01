@@ -49,6 +49,15 @@ const createCourse = {
   }
 };
 
+const editCourse = {
+  // each of these needs restrictions
+  properties: {
+    course_id: {
+      message: `Enter the course id`
+    }
+  }
+};
+
 prompt.get(greet, (err, result) => {
   
   switch (+result.choice) {
@@ -65,6 +74,7 @@ prompt.get(greet, (err, result) => {
     // Edit Existing Course
     case 2:
       prompt.get(editCourse, (err, result) => {
+        
         // This one needs to ask for the course id,
         // then get that course from the database, if it exists
         // then display the existing course on the screen
