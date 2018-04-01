@@ -24,6 +24,7 @@ const greet = {
 };
 
 const createCourse = {
+  // each of these needs restrictions
   properties: {
     course:{
       message: `Enter the course name`
@@ -44,11 +45,19 @@ const createCourse = {
 };
 
 prompt.get(greet, (err, result)=>{
-  console.log('input received!');
-  console.log( result.choice);
+
+  // Create New Course
   result.choice == 1? prompt.get(createCourse, (err,result)=>{
     console.log('new course:',result);
-    // call function that creates new course. 
-    // send it the object with the new course info
+    // call function that creates new course and adds to the database. 
+    // send it the object with the new course info as a parameter
+  }):console.log("nah son");
+
+  //Edit Existsing Course
+  result.choice == 2? prompt.get(editCourse, (err,result)=>{
+    // This one needs to ask for the course id,
+    // then get that course from the database, if it exists
+    // then display the existing course on the screen
+    // and allow the user to edit the values then send it back
   }):console.log("nah son");
 });
