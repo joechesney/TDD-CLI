@@ -23,10 +23,31 @@ const greet = {
   }
 };
 
+const createCourse = {
+  properties: {
+    course:{
+      message: `Enter the course name`
+    },
+    instructor:{
+      message: `Enter the instructor name`
+    },
+    startDate:{
+      message: `Enter the start date`
+    },
+    endDate:{
+      message: `Enter the end date`
+    },
+    seats:{
+      message: `Enter the number of seats`
+    }
+  }
+};
+
 prompt.get(greet, (err, result)=>{
   console.log('input received!');
   console.log( result.choice);
-  result.choice === 1? prompt.get(createCourse, (err,result)=>{
+  result.choice == 1? prompt.get(createCourse, (err,result)=>{
+    console.log('new course:',result);
     // call function that creates new course. 
     // send it the object with the new course info
   }):console.log("nah son");
