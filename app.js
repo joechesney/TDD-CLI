@@ -5,7 +5,7 @@ createDatabase();
 
 prompt.start();
 
-const schema = {
+const greet = {
   properties: {
     choice:{
       message: `
@@ -23,7 +23,11 @@ const schema = {
   }
 };
 
-prompt.get(schema, (err, result)=>{
+prompt.get(greet, (err, result)=>{
   console.log('input received!');
   console.log( result.choice);
+  result.choice === 1? prompt.get(createCourse, (err,result)=>{
+    // call function that creates new course. 
+    // send it the object with the new course info
+  }):console.log("nah son");
 });
