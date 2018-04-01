@@ -7,19 +7,23 @@ prompt.start();
 
 const schema = {
   properties: {
-    name:{
-      pattern: /^[a-zA-Z\s\-]+$/,
-      message: "name must only be leters, spaces, or dashes, bruh",
-      required: true
-    },
-    password:{
-      hidden: true
+    choice:{
+      message: `
+      Welcome the the Bangazon Continuing Ed Course Creator
+      Please choose an action from the following:
+        1 create a new course
+        2 edit an existing course
+        3 remove a course
+        4 view an upcoming course
+        5 view all upcoming courses
+        6 view a past course
+        7 view all past courses
+      `
     }
-  },
+  }
 };
 
 prompt.get(schema, (err, result)=>{
-  console.log('input received');
-  console.log( result.name);
-  console.log( result.password);
+  console.log('input received!');
+  console.log( result.choice);
 });
