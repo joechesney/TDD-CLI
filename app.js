@@ -52,8 +52,9 @@ const createCourse = {
 prompt.get(greet, (err, result) => {
 
   switch (result.choice) {
+
+    // Create New Course
     case 1:
-      // Create New Course
       prompt.get(createCourse, (err, result) => {
         console.log('new course:', result);
         // call function that creates new course and adds to the database. 
@@ -61,8 +62,8 @@ prompt.get(greet, (err, result) => {
       });
       break;
 
+    // Edit Existing Course
     case 2:
-      // Edit Existing Course
       prompt.get(editCourse, (err, result) => {
         // This one needs to ask for the course id,
         // then get that course from the database, if it exists
@@ -71,14 +72,28 @@ prompt.get(greet, (err, result) => {
       });
     break;
     
+    // Delete a course
     case 3:
-      prompt.get(editCourse, (err, result) => {
+      prompt.get(removeCourse, (err, result) => {
         // This one needs to ask for the course id,
-        // then get that course from the database, if it exists
-        // then display the existing course on the screen
-        // and allow the user to edit the values then send it back
+        // then send that id to a function that deletss from db
       });
     break;
+
+    // View an upcoming course
+    case 4:
+      prompt.get(viewUpcomingCourse, (err, result) => {
+        // Not sure what this does lol
+      });
+    break;
+
+    // View all upcoming courses
+    case 5:
+      prompt.get(viewAllUpcomingCourses, (err, result) => {
+        // Not sure what this does lol
+      });
+    break;
+
     default:
       console.log('nah son');
       break;
